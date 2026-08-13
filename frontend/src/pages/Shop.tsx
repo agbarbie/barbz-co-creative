@@ -1,6 +1,8 @@
 import { useMemo, useState } from 'react';
 import SectionHeading from '../components/SectionHeading';
 import ProductCard from '../components/ProductCard';
+import Reveal from '../components/Motion/Reveal';
+import RevealGroup from '../components/Motion/RevealGroup';
 import { products } from '../api/seedData';
 import type { Product } from '../types';
 
@@ -22,48 +24,55 @@ export default function Shop() {
 
   return (
     <>
-      <section className="bg-brand-gradient pb-16 pt-40 text-center text-white">
-        <div className="container-xl">
-          <p className="section-eyebrow">The Shop</p>
-          <h1 className="mt-4 text-4xl text-white sm:text-5xl">Premium Apparel &amp; Merchandise</h1>
-          <p className="mx-auto mt-6 max-w-2xl font-secondary text-sky-100">
-            Buy plain pieces or turn any product into a fully custom-branded item for your
-            business, team, school, or event.
-          </p>
+      <section className="relative overflow-hidden bg-brand-gradient pb-16 pt-40 text-center text-white dark:bg-[#07040D]">
+        <div className="glow-orb -right-20 top-10 h-64 w-64 bg-gold-400/10" />
+        <div className="container-xl relative">
+          <Reveal>
+            <p className="section-eyebrow">The Shop</p>
+            <h1 className="mt-4 text-4xl text-white sm:text-5xl">Premium Apparel &amp; Merchandise</h1>
+            <p className="mx-auto mt-6 max-w-2xl font-secondary text-sky-100">
+              Buy plain pieces or turn any product into a fully custom-branded item for your
+              business, team, school, or event.
+            </p>
+          </Reveal>
         </div>
       </section>
 
       <section className="container-xl py-16">
-        <div className="flex flex-wrap justify-center gap-3">
-          {categories.map((c) => (
-            <button
-              key={c.value}
-              onClick={() => setActive(c.value)}
-              className={`rounded-full px-5 py-2 font-secondary text-sm font-medium transition ${
-                active === c.value
-                  ? 'bg-royal-600 text-white shadow-gold'
-                  : 'bg-royal-50 text-royal-600 hover:bg-royal-100'
-              }`}
-            >
-              {c.label}
-            </button>
-          ))}
-        </div>
+        <Reveal>
+          <div className="flex flex-wrap justify-center gap-3">
+            {categories.map((c) => (
+              <button
+                key={c.value}
+                onClick={() => setActive(c.value)}
+                className={`rounded-full px-5 py-2 font-secondary text-sm font-medium transition ${
+                  active === c.value
+                    ? 'bg-royal-600 text-white shadow-gold dark:bg-gold-400 dark:text-royal-800'
+                    : 'bg-royal-50 text-royal-600 hover:bg-royal-100 dark:bg-white/5 dark:text-sky-100 dark:hover:bg-white/10'
+                }`}
+              >
+                {c.label}
+              </button>
+            ))}
+          </div>
+        </Reveal>
 
-        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <RevealGroup className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3" key={active}>
           {filtered.map((p) => (
             <ProductCard key={p.id} product={p} />
           ))}
-        </div>
+        </RevealGroup>
       </section>
 
-      <section className="bg-royal-50/60 py-20">
+      <section className="bg-royal-50/60 dark:bg-white/[0.02] py-20 dark:bg-white/[0.02]">
         <div className="container-xl">
-          <SectionHeading
-            eyebrow="Not Finding What You Need?"
-            title="Build a Fully Custom Piece"
-            subtitle="Upload your own artwork, choose your colours and placement, and we'll bring it to life."
-          />
+          <Reveal>
+            <SectionHeading
+              eyebrow="Not Finding What You Need?"
+              title="Build a Fully Custom Piece"
+              subtitle="Upload your own artwork, choose your colours and placement, and we'll bring it to life."
+            />
+          </Reveal>
         </div>
       </section>
     </>

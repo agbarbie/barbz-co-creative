@@ -16,11 +16,11 @@ export default function FAQs() {
                 onClick={() => setOpen(open === i ? null : i)}
                 className="flex w-full items-center justify-between text-left"
               >
-                <span className="font-primary text-base font-semibold text-royal-700">{faq.question}</span>
+                <span className="font-primary text-base font-semibold text-royal-700 dark:text-sky-50">{faq.question}</span>
                 <span className="font-accent text-2xl text-gold-500">{open === i ? '−' : '+'}</span>
               </button>
               {open === i && (
-                <p className="mt-3 font-secondary text-sm leading-relaxed text-royal-400">{faq.answer}</p>
+                <p className="mt-3 font-secondary text-sm leading-relaxed text-royal-400 dark:text-sky-200/70">{faq.answer}</p>
               )}
             </div>
           ))}

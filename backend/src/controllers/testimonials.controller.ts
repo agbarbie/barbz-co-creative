@@ -33,6 +33,15 @@ export async function createTestimonial(req: Request, res: Response, next: NextF
   }
 }
 
+export async function listAllTestimonials(req: Request, res: Response, next: NextFunction) {
+  try {
+    const result = await pool.query('SELECT * FROM testimonials ORDER BY created_at DESC');
+    res.json(result.rows);
+  } catch (err) {
+    next(err);
+  }
+}
+
 export async function publishTestimonial(req: Request, res: Response, next: NextFunction) {
   try {
     const result = await pool.query(

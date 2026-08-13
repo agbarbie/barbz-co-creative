@@ -19,7 +19,7 @@ export default function Contact() {
 
   return (
     <>
-      <section className="bg-brand-gradient pb-16 pt-40 text-center text-white">
+      <section className="bg-brand-gradient pb-16 pt-40 dark:bg-[#07040D] text-center text-white">
         <div className="container-xl">
           <p className="section-eyebrow">Get in Touch</p>
           <h1 className="mt-4 text-4xl text-white sm:text-5xl">Let's Start the Conversation</h1>
@@ -31,29 +31,29 @@ export default function Contact() {
           <SectionHeading eyebrow="Reach Us Directly" title="Talk to Barbz & Co." align="left" />
           <div className="mt-8 space-y-4">
             <a
-              href="https://wa.me/254700000000"
+              href="https://wa.me/254705524140"
               target="_blank"
               rel="noopener noreferrer"
               className="card-premium flex items-center gap-4"
             >
               <span className="flex h-11 w-11 items-center justify-center rounded-full bg-[#25D366] text-white">✆</span>
               <div>
-                <p className="font-primary text-sm font-semibold text-royal-700">WhatsApp</p>
-                <p className="font-secondary text-xs text-royal-400">+254 700 000 000</p>
+                <p className="font-primary text-sm font-semibold text-royal-700 dark:text-sky-50">WhatsApp</p>
+                <p className="font-secondary text-xs text-royal-400 dark:text-sky-200/70">+254 705524140</p>
               </div>
             </a>
             <div className="card-premium flex items-center gap-4">
               <span className="flex h-11 w-11 items-center justify-center rounded-full bg-royal-600 text-gold-300">@</span>
               <div>
-                <p className="font-primary text-sm font-semibold text-royal-700">Email</p>
-                <p className="font-secondary text-xs text-royal-400">hello@barbzandco.com</p>
+                <p className="font-primary text-sm font-semibold text-royal-700 dark:text-sky-50">Email</p>
+                <p className="font-secondary text-xs text-royal-400 dark:text-sky-200/70">barbz&cocreative@gmail.com</p>
               </div>
             </div>
             <div className="card-premium flex items-center gap-4">
               <span className="flex h-11 w-11 items-center justify-center rounded-full bg-royal-600 text-gold-300">📍</span>
               <div>
-                <p className="font-primary text-sm font-semibold text-royal-700">Studio</p>
-                <p className="font-secondary text-xs text-royal-400">Nairobi, Kenya</p>
+                <p className="font-primary text-sm font-semibold text-royal-700 dark:text-sky-50">Studio</p>
+                <p className="font-secondary text-xs text-royal-400 dark:text-sky-200/70">Nairobi, Nyeri, Kenya</p>
               </div>
             </div>
             <div className="flex gap-3 pt-2">
@@ -73,8 +73,8 @@ export default function Contact() {
         <div>
           {status === 'success' ? (
             <div className="card-premium text-center">
-              <h2 className="text-2xl text-royal-600">Message Sent 🎉</h2>
-              <p className="mt-3 font-secondary text-royal-400">We'll get back to you shortly.</p>
+              <h2 className="text-2xl text-royal-600 dark:text-white">Message Sent 🎉</h2>
+              <p className="mt-3 font-secondary text-royal-400 dark:text-sky-200/70">We'll get back to you shortly.</p>
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="card-premium space-y-5">
@@ -83,7 +83,7 @@ export default function Contact() {
                 placeholder="Your name"
                 value={form.name}
                 onChange={(e) => setForm({ ...form, name: e.target.value })}
-                className="w-full rounded-lg border border-royal-100 px-4 py-3 font-secondary text-sm focus:border-gold-400 focus:outline-none"
+                className="w-full rounded-lg border border-royal-100 px-4 py-3 font-secondary text-sm focus:border-gold-400 focus:outline-none dark:border-white/10 dark:bg-white/5 dark:text-white dark:placeholder-sky-300/50"
               />
               <input
                 type="email"
@@ -91,7 +91,7 @@ export default function Contact() {
                 placeholder="Email address"
                 value={form.email}
                 onChange={(e) => setForm({ ...form, email: e.target.value })}
-                className="w-full rounded-lg border border-royal-100 px-4 py-3 font-secondary text-sm focus:border-gold-400 focus:outline-none"
+                className="w-full rounded-lg border border-royal-100 px-4 py-3 font-secondary text-sm focus:border-gold-400 focus:outline-none dark:border-white/10 dark:bg-white/5 dark:text-white dark:placeholder-sky-300/50"
               />
               <textarea
                 required
@@ -99,7 +99,7 @@ export default function Contact() {
                 rows={6}
                 value={form.message}
                 onChange={(e) => setForm({ ...form, message: e.target.value })}
-                className="w-full rounded-lg border border-royal-100 px-4 py-3 font-secondary text-sm focus:border-gold-400 focus:outline-none"
+                className="w-full rounded-lg border border-royal-100 px-4 py-3 font-secondary text-sm focus:border-gold-400 focus:outline-none dark:border-white/10 dark:bg-white/5 dark:text-white dark:placeholder-sky-300/50"
               />
               {status === 'error' && (
                 <p className="font-secondary text-sm text-red-500">Could not send your message. Please try again.</p>

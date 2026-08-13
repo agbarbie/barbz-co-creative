@@ -3,8 +3,11 @@
 @tailwind utilities;
 
 @layer base {
+  body {
+    @apply bg-white text-ink transition-colors duration-300 dark:bg-[#0A0614] dark:text-sky-50;
+  }
   h1, h2, h3, h4 {
-    @apply font-primary font-bold tracking-tight text-royal-600;
+    @apply font-primary font-bold tracking-tight text-royal-600 dark:text-white;
   }
   ::selection {
     @apply bg-gold-200 text-royal-700;
@@ -20,7 +23,7 @@
     @apply inline-flex items-center justify-center gap-2 rounded-full bg-gold-400 px-7 py-3
       font-primary text-sm font-semibold uppercase tracking-wide text-royal-800
       shadow-gold transition-all duration-300 hover:bg-gold-300 hover:shadow-lg
-      active:scale-[0.98];
+      active:scale-[0.98] dark:shadow-[0_0_20px_rgba(201,162,39,0.45)];
   }
 
   .btn-outline {
@@ -35,6 +38,12 @@
 
   .card-premium {
     @apply rounded-2xl border border-royal-100 bg-white p-6 shadow-sm transition-all
-      duration-300 hover:-translate-y-1 hover:shadow-premium;
+      duration-300 hover:-translate-y-1 hover:shadow-premium
+      dark:border-white/10 dark:bg-white/[0.04] dark:backdrop-blur
+      dark:hover:border-gold-400/40 dark:hover:shadow-[0_20px_60px_-15px_rgba(201,162,39,0.25)];
+  }
+
+  .glow-orb {
+    @apply pointer-events-none absolute rounded-full blur-3xl;
   }
 }

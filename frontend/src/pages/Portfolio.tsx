@@ -1,4 +1,6 @@
 import { useMemo, useState } from 'react';
+import Reveal from '../components/Motion/Reveal';
+import RevealGroup from '../components/Motion/RevealGroup';
 import { portfolio } from '../api/seedData';
 import type { PortfolioItem } from '../types';
 
@@ -20,31 +22,38 @@ export default function Portfolio() {
 
   return (
     <>
-      <section className="bg-brand-gradient pb-16 pt-40 text-center text-white">
-        <div className="container-xl">
-          <p className="section-eyebrow">Our Portfolio</p>
-          <h1 className="mt-4 text-4xl text-white sm:text-5xl">Stories We've Helped Tell</h1>
+      <section className="relative overflow-hidden bg-brand-gradient pb-16 pt-40 text-center text-white dark:bg-[#07040D]">
+        <div className="glow-orb -left-20 top-4 h-64 w-64 bg-sky-400/10" />
+        <div className="container-xl relative">
+          <Reveal>
+            <p className="section-eyebrow">Our Portfolio</p>
+            <h1 className="mt-4 text-4xl text-white sm:text-5xl">Stories We've Helped Tell</h1>
+          </Reveal>
         </div>
       </section>
 
       <section className="container-xl py-16">
-        <div className="flex flex-wrap justify-center gap-3">
-          {categories.map((c) => (
-            <button
-              key={c.value}
-              onClick={() => setActive(c.value)}
-              className={`rounded-full px-5 py-2 font-secondary text-sm font-medium transition ${
-                active === c.value ? 'bg-royal-600 text-white shadow-gold' : 'bg-royal-50 text-royal-600 hover:bg-royal-100'
-              }`}
-            >
-              {c.label}
-            </button>
-          ))}
-        </div>
+        <Reveal>
+          <div className="flex flex-wrap justify-center gap-3">
+            {categories.map((c) => (
+              <button
+                key={c.value}
+                onClick={() => setActive(c.value)}
+                className={`rounded-full px-5 py-2 font-secondary text-sm font-medium transition ${
+                  active === c.value
+                    ? 'bg-royal-600 text-white shadow-gold dark:bg-gold-400 dark:text-royal-800'
+                    : 'bg-royal-50 text-royal-600 hover:bg-royal-100 dark:bg-white/5 dark:text-sky-100 dark:hover:bg-white/10'
+                }`}
+              >
+                {c.label}
+              </button>
+            ))}
+          </div>
+        </Reveal>
 
-        <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <RevealGroup className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3" key={active}>
           {filtered.map((item) => (
-            <div key={item.id} className="group relative aspect-[4/5] overflow-hidden rounded-2xl bg-royal-100">
+            <div key={item.id} className="group relative aspect-[4/5] overflow-hidden rounded-2xl bg-royal-100 dark:bg-white/5">
               <img
                 src={item.image}
                 alt={item.title}
@@ -57,7 +66,7 @@ export default function Portfolio() {
               </div>
             </div>
           ))}
-        </div>
+        </RevealGroup>
       </section>
     </>
   );

@@ -4,7 +4,7 @@ import { blogPosts } from '../api/seedData';
 export default function Blog() {
   return (
     <>
-      <section className="bg-brand-gradient pb-16 pt-40 text-center text-white">
+      <section className="bg-brand-gradient pb-16 pt-40 dark:bg-[#07040D] text-center text-white">
         <div className="container-xl">
           <p className="section-eyebrow">The Journal</p>
           <h1 className="mt-4 text-4xl text-white sm:text-5xl">Branding &amp; Design Insights</h1>
@@ -23,8 +23,8 @@ export default function Blog() {
                 <p className="font-secondary text-xs uppercase tracking-wide text-gold-500">
                   {post.category} · {new Date(post.date).toLocaleDateString()}
                 </p>
-                <h3 className="mt-2 font-primary text-lg font-semibold text-royal-700">{post.title}</h3>
-                <p className="mt-2 font-secondary text-sm text-royal-400">{post.excerpt}</p>
+                <h3 className="mt-2 font-primary text-lg font-semibold text-royal-700 dark:text-sky-50">{post.title}</h3>
+                <p className="mt-2 font-secondary text-sm text-royal-400 dark:text-sky-200/70">{post.excerpt}</p>
               </div>
             </article>
           ))}

@@ -24,6 +24,15 @@ export async function listPosts(req: Request, res: Response, next: NextFunction)
   }
 }
 
+export async function listAllPosts(req: Request, res: Response, next: NextFunction) {
+  try {
+    const result = await pool.query('SELECT * FROM blog_posts ORDER BY created_at DESC');
+    res.json(result.rows);
+  } catch (err) {
+    next(err);
+  }
+}
+
 export async function getPostBySlug(req: Request, res: Response, next: NextFunction) {
   try {
     const result = await pool.query('SELECT * FROM blog_posts WHERE slug = $1', [req.params.slug]);

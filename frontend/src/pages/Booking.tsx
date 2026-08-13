@@ -31,7 +31,7 @@ export default function Booking() {
 
   return (
     <>
-      <section className="bg-brand-gradient pb-16 pt-40 text-center text-white">
+      <section className="bg-brand-gradient pb-16 pt-40 dark:bg-[#07040D] text-center text-white">
         <div className="container-xl">
           <p className="section-eyebrow">Book a Consultation</p>
           <h1 className="mt-4 text-4xl text-white sm:text-5xl">Let's Talk About Your Vision</h1>
@@ -42,8 +42,8 @@ export default function Booking() {
         <div className="mx-auto max-w-2xl">
           {status === 'success' ? (
             <div className="card-premium text-center">
-              <h2 className="text-2xl text-royal-600">You're Booked 🎉</h2>
-              <p className="mt-3 font-secondary text-royal-400">
+              <h2 className="text-2xl text-royal-600 dark:text-white">You're Booked 🎉</h2>
+              <p className="mt-3 font-secondary text-royal-400 dark:text-sky-200/70">
                 We've received your request and will confirm your consultation shortly by email or WhatsApp.
               </p>
             </div>
@@ -52,11 +52,11 @@ export default function Booking() {
               <SectionHeading eyebrow="Consultation Details" title="Choose a Service & Time" align="left" />
 
               <label className="block">
-                <span className="font-secondary text-sm font-medium text-royal-600">Service</span>
+                <span className="font-secondary text-sm font-medium text-royal-600 dark:text-white">Service</span>
                 <select
                   value={form.service}
                   onChange={(e) => setForm({ ...form, service: e.target.value })}
-                  className="mt-2 w-full rounded-lg border border-royal-100 px-4 py-3 font-secondary text-sm focus:border-gold-400 focus:outline-none"
+                  className="mt-2 w-full rounded-lg border border-royal-100 px-4 py-3 font-secondary text-sm focus:border-gold-400 focus:outline-none dark:border-white/10 dark:bg-white/5 dark:text-white dark:placeholder-sky-300/50"
                 >
                   {services.map((s) => (
                     <option key={s.id}>{s.title}</option>
@@ -66,21 +66,21 @@ export default function Booking() {
 
               <div className="grid gap-6 sm:grid-cols-2">
                 <label className="block">
-                  <span className="font-secondary text-sm font-medium text-royal-600">Preferred Date</span>
+                  <span className="font-secondary text-sm font-medium text-royal-600 dark:text-white">Preferred Date</span>
                   <input
                     type="date"
                     required
                     value={form.date}
                     onChange={(e) => setForm({ ...form, date: e.target.value })}
-                    className="mt-2 w-full rounded-lg border border-royal-100 px-4 py-3 font-secondary text-sm focus:border-gold-400 focus:outline-none"
+                    className="mt-2 w-full rounded-lg border border-royal-100 px-4 py-3 font-secondary text-sm focus:border-gold-400 focus:outline-none dark:border-white/10 dark:bg-white/5 dark:text-white dark:placeholder-sky-300/50"
                   />
                 </label>
                 <label className="block">
-                  <span className="font-secondary text-sm font-medium text-royal-600">Preferred Time</span>
+                  <span className="font-secondary text-sm font-medium text-royal-600 dark:text-white">Preferred Time</span>
                   <select
                     value={form.time}
                     onChange={(e) => setForm({ ...form, time: e.target.value })}
-                    className="mt-2 w-full rounded-lg border border-royal-100 px-4 py-3 font-secondary text-sm focus:border-gold-400 focus:outline-none"
+                    className="mt-2 w-full rounded-lg border border-royal-100 px-4 py-3 font-secondary text-sm focus:border-gold-400 focus:outline-none dark:border-white/10 dark:bg-white/5 dark:text-white dark:placeholder-sky-300/50"
                   >
                     {timeSlots.map((t) => (
                       <option key={t}>{t}</option>
@@ -95,7 +95,7 @@ export default function Booking() {
                   placeholder="Full name"
                   value={form.name}
                   onChange={(e) => setForm({ ...form, name: e.target.value })}
-                  className="rounded-lg border border-royal-100 px-4 py-3 font-secondary text-sm focus:border-gold-400 focus:outline-none"
+                  className="rounded-lg border border-royal-100 px-4 py-3 font-secondary text-sm focus:border-gold-400 focus:outline-none dark:border-white/10 dark:bg-white/5 dark:text-white dark:placeholder-sky-300/50"
                 />
                 <input
                   type="tel"
@@ -103,7 +103,7 @@ export default function Booking() {
                   placeholder="Phone / WhatsApp"
                   value={form.phone}
                   onChange={(e) => setForm({ ...form, phone: e.target.value })}
-                  className="rounded-lg border border-royal-100 px-4 py-3 font-secondary text-sm focus:border-gold-400 focus:outline-none"
+                  className="rounded-lg border border-royal-100 px-4 py-3 font-secondary text-sm focus:border-gold-400 focus:outline-none dark:border-white/10 dark:bg-white/5 dark:text-white dark:placeholder-sky-300/50"
                 />
               </div>
               <input
@@ -112,14 +112,14 @@ export default function Booking() {
                 placeholder="Email address"
                 value={form.email}
                 onChange={(e) => setForm({ ...form, email: e.target.value })}
-                className="w-full rounded-lg border border-royal-100 px-4 py-3 font-secondary text-sm focus:border-gold-400 focus:outline-none"
+                className="w-full rounded-lg border border-royal-100 px-4 py-3 font-secondary text-sm focus:border-gold-400 focus:outline-none dark:border-white/10 dark:bg-white/5 dark:text-white dark:placeholder-sky-300/50"
               />
               <textarea
                 placeholder="Tell us briefly about your project"
                 rows={4}
                 value={form.notes}
                 onChange={(e) => setForm({ ...form, notes: e.target.value })}
-                className="w-full rounded-lg border border-royal-100 px-4 py-3 font-secondary text-sm focus:border-gold-400 focus:outline-none"
+                className="w-full rounded-lg border border-royal-100 px-4 py-3 font-secondary text-sm focus:border-gold-400 focus:outline-none dark:border-white/10 dark:bg-white/5 dark:text-white dark:placeholder-sky-300/50"
               />
 
               {status === 'error' && (

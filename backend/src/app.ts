@@ -12,6 +12,7 @@ import quotesRoutes from './routes/quotes.routes.js';
 import blogRoutes from './routes/blog.routes.js';
 import testimonialsRoutes from './routes/testimonials.routes.js';
 import contactRoutes from './routes/contact.routes.js';
+import adminRoutes from './routes/admin.routes.js';
 import { notFound, errorHandler } from './middleware/errorHandler.js';
 
 export const app = express();
@@ -32,6 +33,7 @@ app.use('/api/quotes', quotesRoutes);
 app.use('/api/blog', blogRoutes);
 app.use('/api/testimonials', testimonialsRoutes);
 app.use('/api/contact', contactRoutes);
+app.use('/api/admin', adminRoutes);
 
 app.use(notFound);
 app.use(errorHandler);

@@ -48,7 +48,7 @@ export default function CustomOrder() {
 
   return (
     <>
-      <section className="bg-brand-gradient pb-16 pt-40 text-center text-white">
+      <section className="bg-brand-gradient pb-16 pt-40 dark:bg-[#07040D] text-center text-white">
         <div className="container-xl">
           <p className="section-eyebrow">Custom Order</p>
           <h1 className="mt-4 text-4xl text-white sm:text-5xl">Build Your Branded Apparel</h1>
@@ -63,8 +63,8 @@ export default function CustomOrder() {
         <div className="mx-auto max-w-3xl">
           {status === 'success' ? (
             <div className="card-premium text-center">
-              <h2 className="text-2xl text-royal-600">Request Received 🎉</h2>
-              <p className="mt-3 font-secondary text-royal-400">
+              <h2 className="text-2xl text-royal-600 dark:text-white">Request Received 🎉</h2>
+              <p className="mt-3 font-secondary text-royal-400 dark:text-sky-200/70">
                 Thank you! Our team will review your custom order and send a mockup and quotation
                 to your email or WhatsApp shortly.
               </p>
@@ -75,11 +75,11 @@ export default function CustomOrder() {
                 <SectionHeading eyebrow="Step 1" title="Apparel & Style" align="left" />
                 <div className="mt-6 grid gap-6 sm:grid-cols-2">
                   <label className="block">
-                    <span className="font-secondary text-sm font-medium text-royal-600">Apparel Type</span>
+                    <span className="font-secondary text-sm font-medium text-royal-600 dark:text-white">Apparel Type</span>
                     <select
                       value={form.apparelType}
                       onChange={(e) => setForm({ ...form, apparelType: e.target.value })}
-                      className="mt-2 w-full rounded-lg border border-royal-100 px-4 py-3 font-secondary text-sm focus:border-gold-400 focus:outline-none"
+                      className="mt-2 w-full rounded-lg border border-royal-100 px-4 py-3 font-secondary text-sm focus:border-gold-400 focus:outline-none dark:border-white/10 dark:bg-white/5 dark:text-white dark:placeholder-sky-300/50"
                     >
                       {apparelTypes.map((t) => (
                         <option key={t}>{t}</option>
@@ -87,21 +87,21 @@ export default function CustomOrder() {
                     </select>
                   </label>
                   <label className="block">
-                    <span className="font-secondary text-sm font-medium text-royal-600">Colours</span>
+                    <span className="font-secondary text-sm font-medium text-royal-600 dark:text-white">Colours</span>
                     <input
                       value={form.colors}
                       onChange={(e) => setForm({ ...form, colors: e.target.value })}
                       placeholder="e.g. Royal Purple with Gold print"
-                      className="mt-2 w-full rounded-lg border border-royal-100 px-4 py-3 font-secondary text-sm focus:border-gold-400 focus:outline-none"
+                      className="mt-2 w-full rounded-lg border border-royal-100 px-4 py-3 font-secondary text-sm focus:border-gold-400 focus:outline-none dark:border-white/10 dark:bg-white/5 dark:text-white dark:placeholder-sky-300/50"
                       required
                     />
                   </label>
                   <label className="block sm:col-span-2">
-                    <span className="font-secondary text-sm font-medium text-royal-600">Branding Placement</span>
+                    <span className="font-secondary text-sm font-medium text-royal-600 dark:text-white">Branding Placement</span>
                     <select
                       value={form.placement}
                       onChange={(e) => setForm({ ...form, placement: e.target.value })}
-                      className="mt-2 w-full rounded-lg border border-royal-100 px-4 py-3 font-secondary text-sm focus:border-gold-400 focus:outline-none"
+                      className="mt-2 w-full rounded-lg border border-royal-100 px-4 py-3 font-secondary text-sm focus:border-gold-400 focus:outline-none dark:border-white/10 dark:bg-white/5 dark:text-white dark:placeholder-sky-300/50"
                     >
                       {placements.map((p) => (
                         <option key={p}>{p}</option>
@@ -116,18 +116,18 @@ export default function CustomOrder() {
                 <div className="mt-6 grid grid-cols-5 gap-3">
                   {sizeKeys.map((s) => (
                     <label key={s} className="text-center">
-                      <span className="font-secondary text-xs font-medium text-royal-500">{s}</span>
+                      <span className="font-secondary text-xs font-medium text-royal-500 dark:text-sky-200">{s}</span>
                       <input
                         type="number"
                         min={0}
                         value={sizes[s]}
                         onChange={(e) => setSizes({ ...sizes, [s]: Number(e.target.value) })}
-                        className="mt-2 w-full rounded-lg border border-royal-100 px-2 py-2 text-center font-secondary text-sm focus:border-gold-400 focus:outline-none"
+                        className="mt-2 w-full rounded-lg border border-royal-100 px-2 py-2 text-center font-secondary text-sm focus:border-gold-400 focus:outline-none dark:border-white/10 dark:bg-white/5 dark:text-white dark:placeholder-sky-300/50"
                       />
                     </label>
                   ))}
                 </div>
-                <p className="mt-3 font-secondary text-xs text-royal-400">Total units: {totalUnits}</p>
+                <p className="mt-3 font-secondary text-xs text-royal-400 dark:text-sky-200/70">Total units: {totalUnits}</p>
               </div>
 
               <div>
@@ -139,7 +139,7 @@ export default function CustomOrder() {
                     className="hidden"
                     onChange={(e) => setFile(e.target.files?.[0] ?? null)}
                   />
-                  <span className="font-secondary text-sm text-royal-500">
+                  <span className="font-secondary text-sm text-royal-500 dark:text-sky-200">
                     {file ? file.name : 'Click to upload your logo or artwork (PNG, JPG, PDF, AI, EPS)'}
                   </span>
                 </label>
@@ -154,7 +154,7 @@ export default function CustomOrder() {
                     placeholder="Email address"
                     value={form.contactEmail}
                     onChange={(e) => setForm({ ...form, contactEmail: e.target.value })}
-                    className="rounded-lg border border-royal-100 px-4 py-3 font-secondary text-sm focus:border-gold-400 focus:outline-none"
+                    className="rounded-lg border border-royal-100 px-4 py-3 font-secondary text-sm focus:border-gold-400 focus:outline-none dark:border-white/10 dark:bg-white/5 dark:text-white dark:placeholder-sky-300/50"
                   />
                   <input
                     type="tel"
@@ -162,14 +162,14 @@ export default function CustomOrder() {
                     placeholder="Phone / WhatsApp number"
                     value={form.contactPhone}
                     onChange={(e) => setForm({ ...form, contactPhone: e.target.value })}
-                    className="rounded-lg border border-royal-100 px-4 py-3 font-secondary text-sm focus:border-gold-400 focus:outline-none"
+                    className="rounded-lg border border-royal-100 px-4 py-3 font-secondary text-sm focus:border-gold-400 focus:outline-none dark:border-white/10 dark:bg-white/5 dark:text-white dark:placeholder-sky-300/50"
                   />
                   <textarea
                     placeholder="Anything else we should know?"
                     value={form.notes}
                     onChange={(e) => setForm({ ...form, notes: e.target.value })}
                     rows={4}
-                    className="rounded-lg border border-royal-100 px-4 py-3 font-secondary text-sm focus:border-gold-400 focus:outline-none sm:col-span-2"
+                    className="rounded-lg border border-royal-100 px-4 py-3 font-secondary text-sm focus:border-gold-400 focus:outline-none dark:border-white/10 dark:bg-white/5 dark:text-white dark:placeholder-sky-300/50 sm:col-span-2"
                   />
                 </div>
               </div>

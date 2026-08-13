@@ -20,3 +20,12 @@ export async function createContactMessage(req: Request, res: Response, next: Ne
     next(err);
   }
 }
+
+export async function listContactMessages(req: Request, res: Response, next: NextFunction) {
+  try {
+    const result = await pool.query('SELECT * FROM contact_messages ORDER BY created_at DESC');
+    res.json(result.rows);
+  } catch (err) {
+    next(err);
+  }
+}

@@ -32,3 +32,21 @@
     transform: translateY(0);
   }
 }
+
+.logo-glow {
+  text-shadow: 0 0 18px rgba(201, 162, 39, 0.35);
+}
+
+.icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 9999px;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.icon-btn:hover {
+  transform: translateY(-1px);
+}

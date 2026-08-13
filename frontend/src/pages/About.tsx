@@ -13,7 +13,7 @@ const values = [
 export default function About() {
   return (
     <>
-      <section className="bg-brand-gradient pb-20 pt-40 text-white">
+      <section className="bg-brand-gradient pb-20 pt-40 dark:bg-[#07040D] text-white">
         <div className="container-xl text-center">
           <p className="section-eyebrow">Our Story</p>
           <h1 className="mt-4 text-4xl text-white sm:text-5xl">Builders of Identities, Not Just Visuals</h1>
@@ -27,14 +27,14 @@ export default function About() {
       <section className="container-xl grid gap-12 py-24 md:grid-cols-3">
         <div className="card-premium">
           <p className="section-eyebrow">Vision</p>
-          <p className="mt-3 font-secondary text-royal-500">
+          <p className="mt-3 font-secondary text-royal-500 dark:text-sky-200">
             To become Africa's most trusted creative branding studio — where ideas become identities,
             businesses become memorable brands, and every creation leaves an enduring impact.
           </p>
         </div>
         <div className="card-premium">
           <p className="section-eyebrow">Mission</p>
-          <p className="mt-3 font-secondary text-royal-500">
+          <p className="mt-3 font-secondary text-royal-500 dark:text-sky-200">
             To transform ideas into meaningful visual experiences through branding, graphic design,
             web development, custom apparel, and creative innovation — with exceptional quality and
             lasting value.
@@ -42,20 +42,20 @@ export default function About() {
         </div>
         <div className="card-premium">
           <p className="section-eyebrow">Purpose</p>
-          <p className="mt-3 font-secondary text-royal-500">
+          <p className="mt-3 font-secondary text-royal-500 dark:text-sky-200">
             To help people and organizations confidently communicate who they are through thoughtful
             design, premium craftsmanship, and authentic storytelling.
           </p>
         </div>
       </section>
 
-      <section className="bg-royal-50/60 py-24">
+      <section className="bg-royal-50/60 dark:bg-white/[0.02] py-24">
         <div className="container-xl">
           <SectionHeading eyebrow="What We Stand On" title="Core Values" />
           <div className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {values.map((v) => (
               <div key={v} className="card-premium text-center">
-                <p className="font-primary text-sm font-semibold text-royal-700">{v}</p>
+                <p className="font-primary text-sm font-semibold text-royal-700 dark:text-sky-50">{v}</p>
               </div>
             ))}
           </div>
@@ -74,8 +74,8 @@ export default function About() {
             <div key={c.name} className="card-premium overflow-hidden p-0">
               <div className="h-24 border-b border-royal-100" style={{ backgroundColor: c.hex }} />
               <div className="p-4">
-                <p className="font-primary text-sm font-semibold text-royal-700">{c.name}</p>
-                <p className="mt-1 font-secondary text-xs text-royal-400">{c.meaning}</p>
+                <p className="font-primary text-sm font-semibold text-royal-700 dark:text-sky-50">{c.name}</p>
+                <p className="mt-1 font-secondary text-xs text-royal-400 dark:text-sky-200/70">{c.meaning}</p>
               </div>
             </div>
           ))}

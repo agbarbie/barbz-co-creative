@@ -35,14 +35,14 @@ export default function Quote() {
   }
 
   return (
-    <section className="bg-royal-50/60 py-24">
+    <section className="bg-royal-50/60 dark:bg-white/[0.02] py-24">
       <div className="container-xl">
         <SectionHeading eyebrow="Request a Quote" title="Tell Us About Your Project" />
         <div className="mx-auto mt-14 max-w-2xl">
           {status === 'success' ? (
             <div className="card-premium text-center">
-              <h2 className="text-2xl text-royal-600">Request Sent 🎉</h2>
-              <p className="mt-3 font-secondary text-royal-400">
+              <h2 className="text-2xl text-royal-600 dark:text-white">Request Sent 🎉</h2>
+              <p className="mt-3 font-secondary text-royal-400 dark:text-sky-200/70">
                 We'll review your project details and get back to you with a tailored quotation.
               </p>
             </div>
@@ -54,7 +54,7 @@ export default function Quote() {
                   placeholder="Full name"
                   value={form.name}
                   onChange={(e) => setForm({ ...form, name: e.target.value })}
-                  className="rounded-lg border border-royal-100 px-4 py-3 font-secondary text-sm focus:border-gold-400 focus:outline-none"
+                  className="rounded-lg border border-royal-100 px-4 py-3 font-secondary text-sm focus:border-gold-400 focus:outline-none dark:border-white/10 dark:bg-white/5 dark:text-white dark:placeholder-sky-300/50"
                 />
                 <input
                   type="tel"
@@ -62,7 +62,7 @@ export default function Quote() {
                   placeholder="Phone / WhatsApp"
                   value={form.phone}
                   onChange={(e) => setForm({ ...form, phone: e.target.value })}
-                  className="rounded-lg border border-royal-100 px-4 py-3 font-secondary text-sm focus:border-gold-400 focus:outline-none"
+                  className="rounded-lg border border-royal-100 px-4 py-3 font-secondary text-sm focus:border-gold-400 focus:outline-none dark:border-white/10 dark:bg-white/5 dark:text-white dark:placeholder-sky-300/50"
                 />
               </div>
               <input
@@ -71,13 +71,13 @@ export default function Quote() {
                 placeholder="Email address"
                 value={form.email}
                 onChange={(e) => setForm({ ...form, email: e.target.value })}
-                className="w-full rounded-lg border border-royal-100 px-4 py-3 font-secondary text-sm focus:border-gold-400 focus:outline-none"
+                className="w-full rounded-lg border border-royal-100 px-4 py-3 font-secondary text-sm focus:border-gold-400 focus:outline-none dark:border-white/10 dark:bg-white/5 dark:text-white dark:placeholder-sky-300/50"
               />
               <div className="grid gap-6 sm:grid-cols-2">
                 <select
                   value={form.serviceType}
                   onChange={(e) => setForm({ ...form, serviceType: e.target.value })}
-                  className="rounded-lg border border-royal-100 px-4 py-3 font-secondary text-sm focus:border-gold-400 focus:outline-none"
+                  className="rounded-lg border border-royal-100 px-4 py-3 font-secondary text-sm focus:border-gold-400 focus:outline-none dark:border-white/10 dark:bg-white/5 dark:text-white dark:placeholder-sky-300/50"
                 >
                   {serviceTypes.map((s) => (
                     <option key={s}>{s}</option>
@@ -86,7 +86,7 @@ export default function Quote() {
                 <select
                   value={form.budgetRange}
                   onChange={(e) => setForm({ ...form, budgetRange: e.target.value })}
-                  className="rounded-lg border border-royal-100 px-4 py-3 font-secondary text-sm focus:border-gold-400 focus:outline-none"
+                  className="rounded-lg border border-royal-100 px-4 py-3 font-secondary text-sm focus:border-gold-400 focus:outline-none dark:border-white/10 dark:bg-white/5 dark:text-white dark:placeholder-sky-300/50"
                 >
                   {budgetRanges.map((b) => (
                     <option key={b}>{b}</option>
@@ -99,7 +99,7 @@ export default function Quote() {
                 rows={5}
                 value={form.details}
                 onChange={(e) => setForm({ ...form, details: e.target.value })}
-                className="w-full rounded-lg border border-royal-100 px-4 py-3 font-secondary text-sm focus:border-gold-400 focus:outline-none"
+                className="w-full rounded-lg border border-royal-100 px-4 py-3 font-secondary text-sm focus:border-gold-400 focus:outline-none dark:border-white/10 dark:bg-white/5 dark:text-white dark:placeholder-sky-300/50"
               />
 
               {status === 'error' && (

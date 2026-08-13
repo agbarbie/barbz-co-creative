@@ -1,12 +1,14 @@
 import { Link } from 'react-router-dom';
 import SectionHeading from '../components/SectionHeading';
 import ServiceCard from '../components/ServiceCard';
+import Reveal from '../components/Motion/Reveal';
+import RevealGroup from '../components/Motion/RevealGroup';
 import { services } from '../api/seedData';
 
 export default function Services() {
   return (
     <>
-      <section className="bg-brand-gradient pb-20 pt-40 text-white text-center">
+      <section className="bg-brand-gradient pb-20 pt-40 dark:bg-[#07040D] text-white text-center">
         <div className="container-xl">
           <p className="section-eyebrow">What We Offer</p>
           <h1 className="mt-4 text-4xl text-white sm:text-5xl">Full-Service Creative Solutions</h1>
@@ -18,21 +20,21 @@ export default function Services() {
       </section>
 
       <section className="container-xl py-24">
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <RevealGroup className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {services.map((s) => (
             <ServiceCard key={s.id} service={s} />
           ))}
-        </div>
+        </RevealGroup>
       </section>
 
-      <section className="bg-royal-50/60 py-24">
+      <section className="bg-royal-50/60 dark:bg-white/[0.02] py-24">
         <div className="container-xl">
           <SectionHeading
             eyebrow="How It Works"
             title="Your Journey With Us"
             subtitle="A clear, guided process from first conversation to finished delivery."
           />
-          <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          <RevealGroup className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {[
               ['1', 'Discovery & Consultation', 'We learn your story, goals and audience.'],
               ['2', 'Proposal & Quotation', 'You receive a clear scope, timeline and price.'],
@@ -41,11 +43,11 @@ export default function Services() {
             ].map(([n, t, d]) => (
               <div key={n} className="card-premium">
                 <span className="font-accent text-3xl italic text-gold-400">{n}</span>
-                <p className="mt-3 font-primary text-base font-semibold text-royal-700">{t}</p>
-                <p className="mt-2 font-secondary text-sm text-royal-400">{d}</p>
+                <p className="mt-3 font-primary text-base font-semibold text-royal-700 dark:text-sky-50">{t}</p>
+                <p className="mt-2 font-secondary text-sm text-royal-400 dark:text-sky-200/70">{d}</p>
               </div>
             ))}
-          </div>
+          </RevealGroup>
         </div>
       </section>
 
