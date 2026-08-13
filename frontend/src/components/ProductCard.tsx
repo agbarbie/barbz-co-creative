@@ -18,10 +18,10 @@ export default function ProductCard({ product }: { product: Product }) {
         )}
       </div>
       <div className="p-5">
-        <h3 className="font-primary text-base font-semibold text-royal-700">{product.name}</h3>
-        <p className="mt-1 font-secondary text-sm text-royal-400">{product.description}</p>
+        <h3 className="font-primary text-base font-semibold text-royal-700 dark:text-white">{product.name}</h3>
+        <p className="mt-1 font-secondary text-sm text-royal-400 dark:text-sky-200/70">{product.description}</p>
         <div className="mt-4 flex items-center justify-between">
-          <span className="font-primary text-lg font-bold text-royal-600">
+          <span className="font-primary text-lg font-bold text-royal-600 dark:text-sky-100">
             KSh {product.price.toLocaleString()}
           </span>
           <Link

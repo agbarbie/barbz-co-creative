@@ -9,8 +9,8 @@ export default function ServiceCard({ service }: { service: Service }) {
           <path d="M8 12h8M12 8v8" />
         </svg>
       </div>
-      <h3 className="mt-4 font-primary text-lg font-semibold text-royal-700">{service.title}</h3>
-      <p className="mt-2 font-secondary text-sm leading-relaxed text-royal-400">{service.description}</p>
+      <h3 className="mt-4 font-primary text-lg font-semibold text-royal-700 dark:text-white">{service.title}</h3>
+      <p className="mt-2 font-secondary text-sm leading-relaxed text-royal-400 dark:text-sky-200/70">{service.description}</p>
     </div>
   );
 }

@@ -40,7 +40,7 @@ export default function Footer() {
         <div>
           <p className="section-eyebrow text-gold-400">Get in Touch</p>
           <ul className="mt-4 space-y-2 font-secondary text-sm text-sky-100">
-            <li>hello@barbzandco.com</li>
+            <li>barbz&cocreative@gmail.com</li>
             <li>WhatsApp: +254 705524140</li>
             <li>Nairobi, Kenya</li>
           </ul>
