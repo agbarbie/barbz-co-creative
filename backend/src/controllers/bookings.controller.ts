@@ -1,4 +1,4 @@
-import type { Response, NextFunction } from 'express';
+import type { Request, Response, NextFunction } from 'express';
 import { z } from 'zod';
 import { pool } from '../db/pool.js';
 import type { AuthedRequest } from '../middleware/auth.js';
@@ -36,6 +36,20 @@ export async function listBookings(req: AuthedRequest, res: Response, next: Next
     const params = req.user?.role === 'admin' ? [] : [req.user?.userId];
     const result = await pool.query(query, params);
     res.json(result.rows);
+  } catch (err) {
+    next(err);
+  }
+}
+
+export async function updateBookingStatus(req: Request, res: Response, next: NextFunction) {
+  try {
+    const status = z.enum(['requested', 'confirmed', 'completed', 'cancelled']).parse(req.body.status);
+    const result = await pool.query(
+      'UPDATE bookings SET status = $1 WHERE id = $2 RETURNING *',
+      [status, req.params.id]
+    );
+    if (result.rows.length === 0) return res.status(404).json({ message: 'Booking not found' });
+    res.json(result.rows[0]);
   } catch (err) {
     next(err);
   }

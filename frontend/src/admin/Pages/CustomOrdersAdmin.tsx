@@ -18,7 +18,7 @@ interface CustomOrderRow {
   created_at: string;
 }
 
-const statuses = ['pending_review', 'mockup_sent', 'approved', 'in_production', 'completed', 'cancelled'];
+const statuses = ['pending_review', 'in_design', 'mockup_sent', 'approved', 'in_production', 'quality_check', 'ready', 'delivered', 'cancelled'];
 
 export default function CustomOrdersAdmin() {
   const [orders, setOrders] = useState<CustomOrderRow[]>([]);

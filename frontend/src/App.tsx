@@ -21,6 +21,7 @@ import AdminLayout from './admin/AdminLayout';
 import AdminLogin from './admin/AdminLogin';
 import Dashboard from './admin/Pages/Dashboard';
 import CustomOrdersAdmin from './admin/Pages/CustomOrdersAdmin';
+import CustomersAdmin from './admin/Pages/CustomersAdmin';
 import BookingsAdmin from './admin/Pages/BookingsAdmin';
 import QuotesAdmin from './admin/Pages/QuotesAdmin';
 import ProductsAdmin from './admin/Pages/ProductsAdmin';
@@ -86,6 +87,14 @@ export default function App() {
           element={
             <ProtectedRoute>
               <AdminLayout><CustomOrdersAdmin /></AdminLayout>
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/admin/customers"
+          element={
+            <ProtectedRoute>
+              <AdminLayout><CustomersAdmin /></AdminLayout>
             </ProtectedRoute>
           }
         />

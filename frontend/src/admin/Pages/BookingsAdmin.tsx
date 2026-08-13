@@ -15,6 +15,8 @@ interface BookingRow {
   status: string;
 }
 
+const statuses = ['requested', 'confirmed', 'completed', 'cancelled'];
+
 export default function BookingsAdmin() {
   const [bookings, setBookings] = useState<BookingRow[]>([]);
   const [loading, setLoading] = useState(true);
@@ -27,6 +29,11 @@ export default function BookingsAdmin() {
       .catch((err) => setError(err instanceof Error ? err.message : 'Failed to load bookings'))
       .finally(() => setLoading(false));
   }, []);
+
+  async function updateStatus(id: string, status: string) {
+    await api.patch(`/bookings/${id}/status`, { status });
+    setBookings((prev) => prev.map((b) => (b.id === id ? { ...b, status } : b)));
+  }
 
   return (
     <>
@@ -44,6 +51,7 @@ export default function BookingsAdmin() {
               <th className="px-4 py-3">Date &amp; Time</th>
               <th className="px-4 py-3">Contact</th>
               <th className="px-4 py-3">Status</th>
+              <th className="px-4 py-3">Update</th>
             </tr>
           </thead>
           <tbody className="divide-y divide-white/5">
@@ -61,11 +69,22 @@ export default function BookingsAdmin() {
                 <td className="px-4 py-3">
                   <StatusBadge status={b.status} />
                 </td>
+                <td className="px-4 py-3">
+                  <select
+                    value={b.status}
+                    onChange={(e) => updateStatus(b.id, e.target.value)}
+                    className="rounded-lg border border-white/10 bg-[#0D0819] px-2 py-1.5 text-xs text-sky-100 focus:border-gold-400 focus:outline-none"
+                  >
+                    {statuses.map((s) => (
+                      <option key={s} value={s}>{s}</option>
+                    ))}
+                  </select>
+                </td>
               </tr>
             ))}
             {!loading && bookings.length === 0 && (
               <tr>
-                <td colSpan={5} className="px-4 py-8 text-center font-secondary text-sm text-sky-400">
+                <td colSpan={6} className="px-4 py-8 text-center font-secondary text-sm text-sky-400">
                   No bookings yet.
                 </td>
               </tr>

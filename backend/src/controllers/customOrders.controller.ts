@@ -62,7 +62,10 @@ export async function listCustomOrders(req: AuthedRequest, res: Response, next: 
 export async function updateCustomOrderStatus(req: Request, res: Response, next: NextFunction) {
   try {
     const status = z
-      .enum(['pending_review', 'mockup_sent', 'approved', 'in_production', 'completed', 'cancelled'])
+      .enum([
+        'pending_review', 'in_design', 'mockup_sent', 'approved',
+        'in_production', 'quality_check', 'ready', 'delivered', 'cancelled',
+      ])
       .parse(req.body.status);
     const result = await pool.query(
       'UPDATE custom_orders SET status = $1 WHERE id = $2 RETURNING *',
