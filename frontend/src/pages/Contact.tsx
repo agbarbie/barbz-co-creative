@@ -1,6 +1,14 @@
 import { useState } from 'react';
 import SectionHeading from '../components/SectionHeading';
 import { api } from '../api/client';
+import BackgroundReveal from '../components/Motion/BackgroundReveal';
+import FloatingAccent from '../components/Motion/FloatingAccent';
+
+// TODO: swap for real photography — see Home.tsx for the asset-folder convention.
+const bg = {
+  hero: 'https://picsum.photos/seed/barbz-contact-hero/1800/1000',
+  accentA: 'https://picsum.photos/seed/barbz-contact-a/400/400',
+};
 
 export default function Contact() {
   const [form, setForm] = useState({ name: '', email: '', message: '' });
@@ -19,7 +27,9 @@ export default function Contact() {
 
   return (
     <>
-      <section className="bg-brand-gradient pb-16 pt-40 dark:bg-[#07040D] text-center text-white">
+      <section className="relative overflow-hidden bg-brand-gradient pb-16 pt-40 dark:bg-[#07040D] text-center text-white">
+        <BackgroundReveal image={bg.hero} overlay="brand" />
+        <FloatingAccent image={bg.accentA} className="right-8 top-14 hidden xl:block" size={100} />
         <div className="container-xl">
           <p className="section-eyebrow">Get in Touch</p>
           <h1 className="mt-4 text-4xl text-white sm:text-5xl">Let's Start the Conversation</h1>

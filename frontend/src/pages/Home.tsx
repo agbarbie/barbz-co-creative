@@ -6,13 +6,30 @@ import ProductCard from '../components/ProductCard';
 import TestimonialCard from '../components/TestimonialCard';
 import Reveal from '../components/Motion/Reveal';
 import RevealGroup from '../components/Motion/RevealGroup';
+import BackgroundReveal from '../components/Motion/BackgroundReveal';
+import FloatingAccent from '../components/Motion/FloatingAccent';
 import { services, products, portfolio, testimonials } from '../api/seedData';
+
+// TODO: swap these Lorem Picsum placeholders for real Barbz & Co. photography/video
+// (drop files into frontend/public/assets/backgrounds/ and frontend/public/assets/video/,
+// then point the `image` / `video` props below at them).
+const bg = {
+  heroTexture: 'https://picsum.photos/seed/barbz-hero/1800/1200',
+  heroVideo: undefined as string | undefined, // e.g. '/assets/video/hero-studio-loop.mp4'
+  studioA: 'https://picsum.photos/seed/barbz-studio-a/400/400',
+  studioB: 'https://picsum.photos/seed/barbz-studio-b/400/400',
+  testimonials: 'https://picsum.photos/seed/barbz-testimonials/1800/1000',
+  portfolioAccent: 'https://picsum.photos/seed/barbz-portfolio-accent/400/400',
+};
 
 export default function Home() {
   return (
     <>
       {/* Hero */}
       <section className="relative overflow-hidden bg-brand-gradient pb-28 pt-40 text-white dark:bg-[#07040D]">
+        <BackgroundReveal image={bg.heroTexture} video={bg.heroVideo} overlay="brand" />
+        <FloatingAccent image={bg.studioA} className="left-6 top-24 hidden xl:block" size={110} />
+        <FloatingAccent image={bg.studioB} className="right-10 bottom-10 hidden xl:block" size={90} />
         <motion.div
           className="glow-orb -right-32 -top-32 h-96 w-96 bg-gold-400/10 dark:bg-gold-400/20 dark:animate-glowPulse"
           animate={{ scale: [1, 1.08, 1] }}
@@ -100,7 +117,8 @@ export default function Home() {
       </section>
 
       {/* Portfolio teaser */}
-      <section className="container-xl py-24">
+      <section className="relative container-xl py-24">
+        <FloatingAccent image={bg.portfolioAccent} className="right-4 -top-4 hidden lg:block" size={80} />
         <Reveal>
           <SectionHeading eyebrow="Our Work" title="Stories We've Helped Bring to Life" />
         </Reveal>
@@ -123,6 +141,7 @@ export default function Home() {
 
       {/* Testimonials */}
       <section className="relative overflow-hidden bg-brand-gradient py-24 dark:bg-[#07040D]">
+        <BackgroundReveal image={bg.testimonials} overlay="brand" />
         <div className="container-xl">
           <Reveal>
             <SectionHeading

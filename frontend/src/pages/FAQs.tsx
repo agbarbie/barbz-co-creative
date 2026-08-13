@@ -1,12 +1,22 @@
 import { useState } from 'react';
 import SectionHeading from '../components/SectionHeading';
 import { faqs } from '../api/seedData';
+import BackgroundReveal from '../components/Motion/BackgroundReveal';
+import FloatingAccent from '../components/Motion/FloatingAccent';
+
+// TODO: swap for real photography — see Home.tsx for the asset-folder convention.
+const bg = {
+  section: 'https://picsum.photos/seed/barbz-faqs/1800/1000',
+  accentA: 'https://picsum.photos/seed/barbz-faqs-a/400/400',
+};
 
 export default function FAQs() {
   const [open, setOpen] = useState<number | null>(0);
 
   return (
-    <section className="py-24">
+    <section className="relative overflow-hidden py-24">
+      <BackgroundReveal image={bg.section} overlay="light" className="opacity-20" />
+      <FloatingAccent image={bg.accentA} className="right-6 top-10 hidden xl:block" size={90} />
       <div className="container-xl pt-16">
         <SectionHeading eyebrow="Need Help?" title="Frequently Asked Questions" />
         <div className="mx-auto mt-14 max-w-2xl divide-y divide-royal-100">

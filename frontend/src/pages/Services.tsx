@@ -3,12 +3,24 @@ import SectionHeading from '../components/SectionHeading';
 import ServiceCard from '../components/ServiceCard';
 import Reveal from '../components/Motion/Reveal';
 import RevealGroup from '../components/Motion/RevealGroup';
+import BackgroundReveal from '../components/Motion/BackgroundReveal';
+import FloatingAccent from '../components/Motion/FloatingAccent';
 import { services } from '../api/seedData';
+
+// TODO: swap for real photography — see Home.tsx for the asset-folder convention.
+const bg = {
+  hero: 'https://picsum.photos/seed/barbz-services-hero/1800/1000',
+  accentA: 'https://picsum.photos/seed/barbz-services-a/400/400',
+  accentB: 'https://picsum.photos/seed/barbz-services-b/400/400',
+};
 
 export default function Services() {
   return (
     <>
-      <section className="bg-brand-gradient pb-20 pt-40 dark:bg-[#07040D] text-white text-center">
+      <section className="relative overflow-hidden bg-brand-gradient pb-20 pt-40 dark:bg-[#07040D] text-white text-center">
+        <BackgroundReveal image={bg.hero} overlay="brand" />
+        <FloatingAccent image={bg.accentA} className="right-10 top-20 hidden xl:block" size={100} />
+        <FloatingAccent image={bg.accentB} className="left-10 bottom-6 hidden xl:block" size={80} />
         <div className="container-xl">
           <p className="section-eyebrow">What We Offer</p>
           <h1 className="mt-4 text-4xl text-white sm:text-5xl">Full-Service Creative Solutions</h1>

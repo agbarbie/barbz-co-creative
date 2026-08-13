@@ -1,4 +1,14 @@
 import SectionHeading from '../components/SectionHeading';
+import BackgroundReveal from '../components/Motion/BackgroundReveal';
+import FloatingAccent from '../components/Motion/FloatingAccent';
+
+// TODO: swap for real photography — see Home.tsx for the asset-folder convention.
+const bg = {
+  hero: 'https://picsum.photos/seed/barbz-about-hero/1800/1000',
+  values: 'https://picsum.photos/seed/barbz-about-values/1800/1000',
+  accentA: 'https://picsum.photos/seed/barbz-about-a/400/400',
+  accentB: 'https://picsum.photos/seed/barbz-about-b/400/400',
+};
 
 const values = [
   'Purpose Before Design',
@@ -13,7 +23,9 @@ const values = [
 export default function About() {
   return (
     <>
-      <section className="bg-brand-gradient pb-20 pt-40 dark:bg-[#07040D] text-white">
+      <section className="relative overflow-hidden bg-brand-gradient pb-20 pt-40 dark:bg-[#07040D] text-white">
+        <BackgroundReveal image={bg.hero} overlay="brand" />
+        <FloatingAccent image={bg.accentA} className="left-8 top-16 hidden xl:block" size={100} />
         <div className="container-xl text-center">
           <p className="section-eyebrow">Our Story</p>
           <h1 className="mt-4 text-4xl text-white sm:text-5xl">Builders of Identities, Not Just Visuals</h1>
@@ -49,7 +61,9 @@ export default function About() {
         </div>
       </section>
 
-      <section className="bg-royal-50/60 dark:bg-white/[0.02] py-24">
+      <section className="relative overflow-hidden bg-royal-50/60 dark:bg-white/[0.02] py-24">
+        <BackgroundReveal image={bg.values} overlay="light" className="opacity-30" />
+        <FloatingAccent image={bg.accentB} className="right-6 bottom-6 hidden lg:block" size={90} />
         <div className="container-xl">
           <SectionHeading eyebrow="What We Stand On" title="Core Values" />
           <div className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">

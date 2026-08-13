@@ -1,8 +1,17 @@
 import { useMemo, useState } from 'react';
 import Reveal from '../components/Motion/Reveal';
 import RevealGroup from '../components/Motion/RevealGroup';
+import BackgroundReveal from '../components/Motion/BackgroundReveal';
+import FloatingAccent from '../components/Motion/FloatingAccent';
 import { portfolio } from '../api/seedData';
 import type { PortfolioItem } from '../types';
+
+// TODO: swap for real project photography — see Home.tsx for the asset-folder convention.
+const bg = {
+  hero: 'https://picsum.photos/seed/barbz-portfolio-hero/1800/1000',
+  accentA: 'https://picsum.photos/seed/barbz-portfolio-a/400/400',
+  accentB: 'https://picsum.photos/seed/barbz-portfolio-b/400/400',
+};
 
 const categories: { label: string; value: PortfolioItem['category'] | 'all' }[] = [
   { label: 'All Work', value: 'all' },
@@ -23,6 +32,9 @@ export default function Portfolio() {
   return (
     <>
       <section className="relative overflow-hidden bg-brand-gradient pb-16 pt-40 text-center text-white dark:bg-[#07040D]">
+        <BackgroundReveal image={bg.hero} overlay="brand" />
+        <FloatingAccent image={bg.accentA} className="right-10 top-16 hidden xl:block" size={100} />
+        <FloatingAccent image={bg.accentB} className="left-14 bottom-6 hidden xl:block" size={80} />
         <div className="glow-orb -left-20 top-4 h-64 w-64 bg-sky-400/10" />
         <div className="container-xl relative">
           <Reveal>

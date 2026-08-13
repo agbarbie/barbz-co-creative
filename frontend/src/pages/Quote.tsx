@@ -2,6 +2,14 @@ import { useState } from 'react';
 import SectionHeading from '../components/SectionHeading';
 import { api } from '../api/client';
 import type { QuotePayload } from '../types';
+import BackgroundReveal from '../components/Motion/BackgroundReveal';
+import FloatingAccent from '../components/Motion/FloatingAccent';
+
+// TODO: swap for real photography — see Home.tsx for the asset-folder convention.
+const bg = {
+  section: 'https://picsum.photos/seed/barbz-quote/1800/1000',
+  accentA: 'https://picsum.photos/seed/barbz-quote-a/400/400',
+};
 
 const serviceTypes = [
   'Brand Identity Design',
@@ -35,7 +43,9 @@ export default function Quote() {
   }
 
   return (
-    <section className="bg-royal-50/60 dark:bg-white/[0.02] py-24">
+    <section className="relative overflow-hidden bg-royal-50/60 dark:bg-white/[0.02] py-24">
+      <BackgroundReveal image={bg.section} overlay="light" className="opacity-25" />
+      <FloatingAccent image={bg.accentA} className="right-8 top-16 hidden xl:block" size={90} />
       <div className="container-xl">
         <SectionHeading eyebrow="Request a Quote" title="Tell Us About Your Project" />
         <div className="mx-auto mt-14 max-w-2xl">

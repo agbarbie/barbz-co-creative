@@ -3,6 +3,14 @@ import SectionHeading from '../components/SectionHeading';
 import { api } from '../api/client';
 import { services } from '../api/seedData';
 import type { BookingPayload } from '../types';
+import BackgroundReveal from '../components/Motion/BackgroundReveal';
+import FloatingAccent from '../components/Motion/FloatingAccent';
+
+// TODO: swap for real photography — see Home.tsx for the asset-folder convention.
+const bg = {
+  hero: 'https://picsum.photos/seed/barbz-booking-hero/1800/1000',
+  accentA: 'https://picsum.photos/seed/barbz-booking-a/400/400',
+};
 
 const timeSlots = ['9:00 AM', '11:00 AM', '1:00 PM', '3:00 PM', '5:00 PM'];
 
@@ -31,7 +39,9 @@ export default function Booking() {
 
   return (
     <>
-      <section className="bg-brand-gradient pb-16 pt-40 dark:bg-[#07040D] text-center text-white">
+      <section className="relative overflow-hidden bg-brand-gradient pb-16 pt-40 dark:bg-[#07040D] text-center text-white">
+        <BackgroundReveal image={bg.hero} overlay="brand" />
+        <FloatingAccent image={bg.accentA} className="left-10 bottom-6 hidden xl:block" size={90} />
         <div className="container-xl">
           <p className="section-eyebrow">Book a Consultation</p>
           <h1 className="mt-4 text-4xl text-white sm:text-5xl">Let's Talk About Your Vision</h1>

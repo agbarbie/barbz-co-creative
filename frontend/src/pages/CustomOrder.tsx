@@ -4,6 +4,14 @@ import SectionHeading from '../components/SectionHeading';
 import { api } from '../api/client';
 import { products } from '../api/seedData';
 import type { CustomOrderPayload } from '../types';
+import BackgroundReveal from '../components/Motion/BackgroundReveal';
+import FloatingAccent from '../components/Motion/FloatingAccent';
+
+// TODO: swap for real photography — see Home.tsx for the asset-folder convention.
+const bg = {
+  hero: 'https://picsum.photos/seed/barbz-customorder-hero/1800/1000',
+  accentA: 'https://picsum.photos/seed/barbz-customorder-a/400/400',
+};
 
 const apparelTypes = ['Hoodie', 'T-Shirt', 'Sweatshirt', 'Polo', 'Cap', 'Tote Bag'];
 const placements = ['Front Chest', 'Back (Full)', 'Sleeve', 'Front & Back'];
@@ -48,7 +56,9 @@ export default function CustomOrder() {
 
   return (
     <>
-      <section className="bg-brand-gradient pb-16 pt-40 dark:bg-[#07040D] text-center text-white">
+      <section className="relative overflow-hidden bg-brand-gradient pb-16 pt-40 dark:bg-[#07040D] text-center text-white">
+        <BackgroundReveal image={bg.hero} overlay="brand" />
+        <FloatingAccent image={bg.accentA} className="right-10 top-14 hidden xl:block" size={100} />
         <div className="container-xl">
           <p className="section-eyebrow">Custom Order</p>
           <h1 className="mt-4 text-4xl text-white sm:text-5xl">Build Your Branded Apparel</h1>
