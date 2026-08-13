@@ -8,8 +8,8 @@
   left: 0;
   bottom: -4px;
   width: 0;
-  height: 2px;
-  background: linear-gradient(90deg, #c9a227, #ead289);
+  height: 0;
+  border-top: 1.5px dashed #c9a227;
   transition: width 0.25s ease;
 }
 

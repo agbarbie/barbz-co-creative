@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 export default {
+  darkMode: 'class',
   content: ['./index.html', './src/**/*.{ts,tsx}'],
   theme: {
     extend: {
@@ -68,10 +69,20 @@ export default {
           '0%': { backgroundPosition: '-200% 0' },
           '100%': { backgroundPosition: '200% 0' },
         },
+        glowPulse: {
+          '0%, 100%': { opacity: 0.55, transform: 'scale(1)' },
+          '50%': { opacity: 1, transform: 'scale(1.05)' },
+        },
+        float: {
+          '0%, 100%': { transform: 'translateY(0)' },
+          '50%': { transform: 'translateY(-10px)' },
+        },
       },
       animation: {
         fadeUp: 'fadeUp 0.7s ease-out both',
         shimmer: 'shimmer 3s linear infinite',
+        glowPulse: 'glowPulse 3s ease-in-out infinite',
+        float: 'float 5s ease-in-out infinite',
       },
     },
   },
