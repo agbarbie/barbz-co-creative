@@ -2,6 +2,7 @@ import SectionHeading from '../components/SectionHeading';
 import { blogPosts } from '../api/seedData';
 import BackgroundReveal from '../components/Motion/BackgroundReveal';
 import FloatingAccent from '../components/Motion/FloatingAccent';
+import ImageFallback from '../components/Art/ImageFallback';
 
 // TODO: swap for real photography — see Home.tsx for the asset-folder convention.
 const bg = {
@@ -27,7 +28,12 @@ export default function Blog() {
           {blogPosts.map((post) => (
             <article key={post.id} className="card-premium overflow-hidden p-0">
               <div className="aspect-video overflow-hidden bg-royal-50">
-                <img src={post.image} alt={post.title} className="h-full w-full object-cover" />
+                <ImageFallback
+                  src={post.image}
+                  alt={post.title}
+                  label={post.category}
+                  className="h-full w-full object-cover"
+                />
               </div>
               <div className="p-6">
                 <p className="font-secondary text-xs uppercase tracking-wide text-gold-500">

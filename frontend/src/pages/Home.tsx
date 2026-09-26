@@ -1,9 +1,12 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import SectionHeading from '../components/SectionHeading';
 import ServiceCard from '../components/ServiceCard';
 import ProductCard from '../components/ProductCard';
 import TestimonialCard from '../components/TestimonialCard';
+import ApparelArt from '../components/Art/ApparelArt';
+import ImageFallback from '../components/Art/ImageFallback';
 import Reveal from '../components/Motion/Reveal';
 import RevealGroup from '../components/Motion/RevealGroup';
 import BackgroundReveal from '../components/Motion/BackgroundReveal';
@@ -23,6 +26,8 @@ const bg = {
 };
 
 export default function Home() {
+  const [heroImageFailed, setHeroImageFailed] = useState(false);
+
   return (
     <>
       {/* Hero */}
@@ -59,11 +64,21 @@ export default function Home() {
           <Reveal direction="right" delay={0.15}>
             <div className="relative animate-float">
               <div className="aspect-[4/5] w-full overflow-hidden rounded-3xl border border-white/10 bg-white/5 shadow-premium backdrop-blur">
-                <img
-                  src="/assets/hero/hero-mockup.jpg"
-                  alt="Barbz & Co. Creative branded hoodie mockup"
-                  className="h-full w-full object-cover"
-                />
+                {heroImageFailed ? (
+                  // Real hero mockup missing/not yet uploaded — see public/assets/README.md
+                  <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-royal-700 via-royal-800 to-[#0B2C40]">
+                    <div className="w-2/3 max-w-[260px] drop-shadow-2xl">
+                      <ApparelArt kind="hoodies" animated={false} className="bg-transparent" />
+                    </div>
+                  </div>
+                ) : (
+                  <img
+                    src="/assets/hero/hero-mockup.jpg"
+                    alt="Barbz & Co. Creative branded hoodie mockup"
+                    className="h-full w-full object-cover"
+                    onError={() => setHeroImageFailed(true)}
+                  />
+                )}
               </div>
               <div className="absolute -bottom-6 -left-6 rounded-2xl bg-white px-6 py-4 shadow-lg dark:bg-[#150A28] dark:shadow-[0_0_30px_rgba(201,162,39,0.2)]">
                 <p className="font-primary text-2xl font-extrabold text-royal-600 dark:text-gold-300">200+</p>
@@ -129,7 +144,12 @@ export default function Home() {
               to="/portfolio"
               className="group relative aspect-[4/5] overflow-hidden rounded-2xl bg-royal-100 dark:bg-white/5"
             >
-              <img src={item.image} alt={item.title} className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
+              <ImageFallback
+                src={item.image}
+                alt={item.title}
+                label={item.title}
+                className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+              />
               <div className="absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-royal-900/80 via-royal-900/10 to-transparent p-5">
                 <p className="font-secondary text-xs uppercase tracking-wide text-gold-300">{item.category}</p>
                 <p className="font-primary text-lg font-semibold text-white">{item.title}</p>

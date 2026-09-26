@@ -1,16 +1,33 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import type { Product } from '../types';
+import ApparelArt from './Art/ApparelArt';
 
 export default function ProductCard({ product }: { product: Product }) {
+  const [imageFailed, setImageFailed] = useState(false);
+
   return (
-    <div className="card-premium group overflow-hidden p-0">
-      <div className="relative aspect-square overflow-hidden bg-royal-50">
-        <img
-          src={product.image}
-          alt={product.name}
-          className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-          loading="lazy"
-        />
+    <motion.div
+      className="card-premium group overflow-hidden p-0"
+      whileHover={{ y: -6 }}
+      transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+    >
+      <div className="relative aspect-square overflow-hidden bg-royal-50 dark:bg-white/5">
+        {imageFailed ? (
+          // Real photo missing/not yet uploaded — show brand apparel art instead of a broken image.
+          // Drop a real photo at the path in seedData.ts (see public/assets/README.md) and this swaps
+          // back to it automatically.
+          <ApparelArt kind={product.category} className="h-full w-full" />
+        ) : (
+          <img
+            src={product.image}
+            alt={product.name}
+            className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+            loading="lazy"
+            onError={() => setImageFailed(true)}
+          />
+        )}
         {product.customizable && (
           <span className="absolute left-3 top-3 rounded-full bg-gold-400 px-3 py-1 font-secondary text-[11px] font-semibold uppercase tracking-wide text-royal-800 shadow">
             Customizable
@@ -26,12 +43,12 @@ export default function ProductCard({ product }: { product: Product }) {
           </span>
           <Link
             to={`/custom-order?product=${product.id}`}
-            className="font-secondary text-sm font-semibold text-gold-500 hover:text-gold-600"
+            className="font-secondary text-sm font-semibold text-gold-500 transition hover:text-gold-600"
           >
             Customize →
           </Link>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }

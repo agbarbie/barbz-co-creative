@@ -3,6 +3,7 @@ import Reveal from '../components/Motion/Reveal';
 import RevealGroup from '../components/Motion/RevealGroup';
 import BackgroundReveal from '../components/Motion/BackgroundReveal';
 import FloatingAccent from '../components/Motion/FloatingAccent';
+import ImageFallback from '../components/Art/ImageFallback';
 import { portfolio } from '../api/seedData';
 import type { PortfolioItem } from '../types';
 
@@ -66,9 +67,10 @@ export default function Portfolio() {
         <RevealGroup className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3" key={active}>
           {filtered.map((item) => (
             <div key={item.id} className="group relative aspect-[4/5] overflow-hidden rounded-2xl bg-royal-100 dark:bg-white/5">
-              <img
+              <ImageFallback
                 src={item.image}
                 alt={item.title}
+                label={item.title}
                 className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
               />
               <div className="absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-royal-900/85 via-royal-900/20 to-transparent p-5">
