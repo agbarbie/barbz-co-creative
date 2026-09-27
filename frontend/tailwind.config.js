@@ -54,11 +54,13 @@ export default {
       },
       backgroundImage: {
         'brand-gradient': 'linear-gradient(135deg, #3B0764 0%, #21033C 55%, #0B2C40 100%)',
+        'blush-gradient': 'linear-gradient(135deg, #F4EBFB 0%, #FBF6E7 50%, #EFF9FE 100%)',
         'gold-sheen': 'linear-gradient(90deg, #876A17 0%, #EAD289 50%, #876A17 100%)',
       },
       boxShadow: {
-        gold: '0 0 0 1px rgba(201,162,39,0.4), 0 8px 30px rgba(201,162,39,0.15)',
-        premium: '0 20px 60px -15px rgba(59,7,100,0.45)',
+        gold: '0 0 0 1px rgba(201,162,39,0.35), 0 8px 30px rgba(201,162,39,0.12)',
+        premium: '0 25px 70px -20px rgba(59,7,100,0.28)',
+        soft: '0 12px 40px -12px rgba(59,7,100,0.14)',
       },
       keyframes: {
         fadeUp: {

@@ -15,9 +15,6 @@ export default function ProductCard({ product }: { product: Product }) {
     >
       <div className="relative aspect-square overflow-hidden bg-royal-50 dark:bg-white/5">
         {imageFailed ? (
-          // Real photo missing/not yet uploaded — show brand apparel art instead of a broken image.
-          // Drop a real photo at the path in seedData.ts (see public/assets/README.md) and this swaps
-          // back to it automatically.
           <ApparelArt kind={product.category} className="h-full w-full" />
         ) : (
           <img
@@ -35,7 +32,7 @@ export default function ProductCard({ product }: { product: Product }) {
         )}
       </div>
       <div className="p-5">
-        <h3 className="font-primary text-base font-semibold text-royal-700 dark:text-white">{product.name}</h3>
+        <h3 className="font-accent text-lg italic font-medium text-royal-700 dark:text-white">{product.name}</h3>
         <p className="mt-1 font-secondary text-sm text-royal-400 dark:text-sky-200/70">{product.description}</p>
         <div className="mt-4 flex items-center justify-between">
           <span className="font-primary text-lg font-bold text-royal-600 dark:text-sky-100">

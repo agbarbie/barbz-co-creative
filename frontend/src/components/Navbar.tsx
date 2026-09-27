@@ -39,7 +39,7 @@ export default function Navbar() {
       <div className="container-xl flex items-center justify-between py-4">
         <Link to="/" className="flex items-center gap-2">
           <span
-            className={`font-primary text-xl font-extrabold tracking-tight ${
+            className={`font-accent text-2xl italic tracking-tight ${
               solid ? 'text-royal-600 dark:text-white dark:logo-glow' : 'text-white'
             }`}
           >

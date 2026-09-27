@@ -7,28 +7,28 @@
     @apply relative bg-white text-ink transition-colors duration-300 dark:bg-[#0A0614] dark:text-sky-50;
   }
 
-  /* Signature texture: a faint woven-fabric grain sits above every page,
-     tying the "custom apparel" identity into the surface itself rather
-     than living only in copy. Blend mode lets it read through every
-     section background without touching a single page component. */
+  /* A faint paper-grain texture — soft, not industrial. */
   body::after {
     content: '';
     position: fixed;
     inset: 0;
     z-index: 60;
     pointer-events: none;
-    opacity: 0.035;
+    opacity: 0.02;
     mix-blend-mode: overlay;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
     background-size: 140px 140px;
   }
   html.dark body::after {
-    opacity: 0.06;
+    opacity: 0.04;
     mix-blend-mode: soft-light;
   }
 
+  /* Elegant serif display type for every heading — the core of the
+     feminine, boutique feel. Structural/UI text (nav, buttons, labels)
+     stays on the sans-serif families for legibility and contrast. */
   h1, h2, h3, h4 {
-    @apply font-primary font-bold tracking-tight text-royal-600 dark:text-white;
+    @apply font-accent font-semibold tracking-normal text-royal-600 dark:text-white;
   }
   ::selection {
     @apply bg-gold-200 text-royal-700;
@@ -41,85 +41,37 @@
   }
 
   .btn-gold {
-    @apply relative inline-flex items-center justify-center gap-2 rounded-full bg-gold-400 px-7 py-3
-      font-primary text-sm font-semibold uppercase tracking-wide text-royal-800
-      shadow-gold transition-all duration-300 hover:bg-gold-300 hover:shadow-lg
-      active:scale-[0.98] dark:shadow-[0_0_20px_rgba(201,162,39,0.45)];
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-gold-400 px-8 py-3
+      font-secondary text-sm font-medium uppercase tracking-[0.12em] text-royal-800
+      shadow-gold transition-all duration-300 hover:bg-gold-300 hover:shadow-lg hover:-translate-y-0.5
+      active:scale-[0.98] dark:shadow-[0_0_20px_rgba(201,162,39,0.4)];
   }
 
   .btn-outline {
-    @apply relative inline-flex items-center justify-center gap-2 rounded-full border border-white/70
-      px-7 py-3 font-primary text-sm font-semibold uppercase tracking-wide text-white
-      transition-all duration-300 hover:border-gold-400 hover:text-gold-300;
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-white/60
+      px-8 py-3 font-secondary text-sm font-medium uppercase tracking-[0.12em] text-white
+      transition-all duration-300 hover:border-gold-300 hover:text-gold-200 hover:-translate-y-0.5;
   }
 
-  /* A dashed "tacking stitch" ring blooms around gold/outline buttons on
-     hover/focus — a small, restrained nod to Barbz & Co.'s apparel craft
-     rather than a generic glow. */
-  .btn-gold::before,
-  .btn-outline::before {
-    content: '';
-    position: absolute;
-    inset: -5px;
-    border-radius: 9999px;
-    border: 1.5px dashed rgba(255, 255, 255, 0.6);
-    opacity: 0;
-    transform: scale(0.92);
-    pointer-events: none;
-    transition: opacity 0.3s ease, transform 0.3s ease;
-  }
-  .btn-outline::before {
-    border-color: currentColor;
-  }
-  .btn-gold:hover::before,
-  .btn-gold:focus-visible::before,
-  .btn-outline:hover::before,
-  .btn-outline:focus-visible::before {
-    opacity: 0.5;
-    transform: scale(1);
+  /* Thin gold-outline variant — softer than a filled pill, reads more
+     boutique than a corporate CTA. */
+  .btn-ghost-gold {
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-gold-400/50
+      bg-transparent px-8 py-3 font-secondary text-sm font-medium uppercase tracking-[0.12em]
+      text-royal-600 transition-all duration-300 hover:border-gold-400 hover:bg-gold-50
+      dark:text-gold-200 dark:hover:bg-gold-400/10;
   }
 
   .section-eyebrow {
-    @apply relative inline-flex items-center gap-2 font-secondary text-xs font-semibold
-      uppercase tracking-[0.25em] text-gold-500;
-  }
-  /* Stitch-tick after every eyebrow label, standing in for the numbered
-     "01/02/03" cliché with something that actually belongs to a tailoring
-     and print studio: a tacking stitch marking where a seam begins. */
-  .section-eyebrow::after {
-    content: '';
-    width: 26px;
-    height: 0;
-    border-top: 1.5px dashed currentColor;
-    opacity: 0.55;
+    @apply inline-flex items-center gap-3 font-secondary text-[11px] font-medium
+      uppercase tracking-[0.32em] text-gold-500;
   }
 
   .card-premium {
-    @apply relative rounded-2xl border border-royal-100 bg-white p-6 shadow-sm transition-all
-      duration-300 hover:-translate-y-1 hover:shadow-premium
+    @apply rounded-[28px] border border-royal-100/70 bg-white p-7 shadow-soft transition-all
+      duration-300 hover:-translate-y-1.5 hover:shadow-premium hover:border-gold-300/50
       dark:border-white/10 dark:bg-white/[0.04] dark:backdrop-blur
-      dark:hover:border-gold-400/40 dark:hover:shadow-[0_20px_60px_-15px_rgba(201,162,39,0.25)];
-    /* folded top-right corner, like a woven garment tag */
-    clip-path: polygon(0 0, calc(100% - 16px) 0, 100% 16px, 100% 100%, 0 100%);
-  }
-  .card-premium::before {
-    content: '';
-    position: absolute;
-    top: 7px;
-    right: 7px;
-    width: 5px;
-    height: 5px;
-    border-radius: 9999px;
-    background: theme('colors.gold.400');
-    opacity: 0.55;
-    transition: opacity 0.3s ease, transform 0.3s ease;
-  }
-  .card-premium:hover {
-    transform: translateY(-4px) rotate(-0.35deg);
-  }
-  .card-premium:hover::before {
-    opacity: 1;
-    transform: scale(1.3);
+      dark:hover:border-gold-400/30 dark:hover:shadow-[0_25px_70px_-20px_rgba(201,162,39,0.2)];
   }
 
   .glow-orb {
@@ -128,6 +80,6 @@
   }
   html.dark .glow-orb {
     mix-blend-mode: screen;
-    opacity: 0.85;
+    opacity: 0.8;
   }
 }
