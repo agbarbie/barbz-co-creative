@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { NavLink, Link } from "react-router-dom";
 import { useTheme } from "../context/ThemeContext";
-import Logo from "./logo";
+import Logo from "./Logo";
 import "./Navbar.css";
 
 const links = [

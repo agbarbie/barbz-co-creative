@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import Logo from "./logo";
+import Logo from "./Logo";
 const socialClass =
   "rounded-full border border-white/30 px-3 py-1 font-secondary text-xs text-sky-100 transition hover:border-gold-400 hover:text-gold-300";
 
