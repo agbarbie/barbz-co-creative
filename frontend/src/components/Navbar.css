@@ -35,6 +35,10 @@
   filter: brightness(0) invert(1);
 }
 
+.brand-logo--footer {
+  height: 56px;
+}
+
 @keyframes slideDown {
   from {
     opacity: 0;

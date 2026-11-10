@@ -16,11 +16,12 @@ export default function Footer() {
 
       <div className="container-xl relative grid gap-10 py-16 md:grid-cols-4">
         <div>
-          <Logo className="brand-logo--footer" />
-          <p className="mt-3 font-accent text-lg italic text-sky-100">
-            Your Vision. My Design. One Impactful Story.
-          </p>
-        </div>
+  <img
+    src="/assets/logo/barbz-logo.png"
+    alt="Barbz & Co. Creative"
+    className="brand-logo brand-logo--on-dark brand-logo--footer"
+  />
+</div>
 
         <div>
           <p className="section-eyebrow text-gold-400">Explore</p>
