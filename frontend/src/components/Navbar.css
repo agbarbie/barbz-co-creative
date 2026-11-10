@@ -22,6 +22,19 @@
   animation: slideDown 0.25s ease-out both;
 }
 
+.brand-logo {
+  height: 44px;
+  width: auto;
+  display: block;
+  object-fit: contain;
+  transition: filter 0.3s ease;
+}
+
+/* on purple/dark surfaces: turn the logo solid white */
+.brand-logo--on-dark {
+  filter: brightness(0) invert(1);
+}
+
 @keyframes slideDown {
   from {
     opacity: 0;

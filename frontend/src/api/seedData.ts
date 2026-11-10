@@ -21,11 +21,29 @@ export const products: Product[] = [
 ];
 
 export const portfolio: PortfolioItem[] = [
-  { id: 'w1', title: 'Grace Chapel Rebrand', client: 'Grace Chapel', category: 'branding', image: '/assets/portfolio/grace-chapel.jpg', summary: 'Full identity system including logo, colours, and branded apparel for a growing congregation.' },
-  { id: 'w2', title: 'Nova Tech Website', client: 'Nova Tech', category: 'web', image: '/assets/portfolio/nova-tech.jpg', summary: 'A conversion-focused website for a fintech startup, built on React and Node.' },
-  { id: 'w3', title: 'Summit Conference Merch', client: 'Summit Africa', category: 'apparel', image: '/assets/portfolio/summit.jpg', summary: '500+ branded hoodies and tees produced for a three-day conference.' },
-  { id: 'w4', title: 'Kito School Identity', client: 'Kito School', category: 'branding', image: '/assets/portfolio/kito-school.jpg', summary: 'Logo, uniform branding guidelines, and stationery for a growing school.' },
-  { id: 'w5', title: 'Elevate Fest Event Branding', client: 'Elevate Fest', category: 'event', image: '/assets/portfolio/elevate-fest.jpg', summary: 'Complete event branding — signage, stage design, and staff apparel.' },
+  // Logos
+  { id: 'logo-agrifina', title: 'Agrifina Consulting Ltd', client: 'Agrifina Consulting Ltd', category: 'logos', image: '/assets/portfolio/agrifina-consulting-ltd-logo.png' },
+  { id: 'logo-ne', title: 'NE Logo', client: 'NE', category: 'logos', image: '/assets/portfolio/ne-logo.png' },
+  { id: 'logo-pedestal-1', title: 'Pedestal Mgt Inst — Logo 1', client: 'Pedestal Mgt Inst', category: 'logos', image: '/assets/portfolio/pedestal-mgt-inst-logo1.png' },
+  { id: 'logo-pedestal-2', title: 'Pedestal Mgt Inst — Logo 2', client: 'Pedestal Mgt Inst', category: 'logos', image: '/assets/portfolio/pedestal-mgt-inst-logo2.png' },
+  { id: 'logo-beifity', title: 'Beifity', client: 'Beifity', category: 'logos', image: '/assets/portfolio/beifity.png' },
+
+  // Banners
+  { id: 'banner-jalton', title: 'Jalton Banner', client: 'Jalton', category: 'banners', image: '/assets/portfolio/jalton-banner.png' },
+  { id: 'banner-nesta', title: 'Makeup by Nesta — Banner', client: 'Makeup by Nesta', category: 'banners', image: '/assets/portfolio/makeup-by-nesta-banner.jpg' },
+  { id: 'banner-ngao', title: 'Ngao Labs — Banner', client: 'Ngao Labs', category: 'banners', image: '/assets/portfolio/ngaolabs-banner.jpg' },
+
+  // Posters & flyers
+  { id: 'poster-nesta', title: 'Makeup by Nesta — Poster', client: 'Makeup by Nesta', category: 'posters', image: '/assets/portfolio/makeup-by-nesta-poster.png', featured: true },
+  { id: 'poster-ngao-webinar', title: 'Ngao Labs — Webinar Poster', client: 'Ngao Labs', category: 'posters', image: '/assets/portfolio/ngao-labs-webinar-poster.png', featured: true },
+  { id: 'poster-webinar', title: 'Webinar Poster', client: '', category: 'posters', image: '/assets/portfolio/webinar.png' },
+  { id: 'poster-word-session', title: 'Word Session Posters', client: '', category: 'posters', image: '/assets/portfolio/word-session-posters.png' },
+
+  // Adverts & product design
+  { id: 'advert-nakim', title: 'Nakim Perfume — Advert', client: 'Nakim Perfume', category: 'adverts', image: '/assets/portfolio/nakim-perfume-advert.png', featured: true },
+  { id: 'design-klassic-1', title: 'Klassic — Product Design', client: 'Klassic', category: 'adverts', image: '/assets/portfolio/klassic-product-design.png' },
+  { id: 'design-klassic-2', title: 'Klassic — Product Design 2', client: 'Klassic', category: 'adverts', image: '/assets/portfolio/klassic-product-design2.png' },
+  { id: 'design-yaya', title: 'Yaya Pizzeria', client: 'Yaya Pizzeria', category: 'adverts', image: '/assets/portfolio/yaya-pizzeria-restaurant.png' },
 ];
 
 export const testimonials: Testimonial[] = [

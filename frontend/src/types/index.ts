@@ -12,9 +12,10 @@ export interface PortfolioItem {
   id: string;
   title: string;
   client: string;
-  category: 'branding' | 'web' | 'apparel' | 'event';
+  category: 'logos' | 'banners' | 'posters' | 'adverts';
   image: string;
-  summary: string;
+  summary?: string;
+  featured?: boolean;
 }
 
 export interface Testimonial {

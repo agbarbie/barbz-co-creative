@@ -53,7 +53,7 @@ export default function Home() {
                   </div>
                 ) : (
                   <img
-                    src="/assets/hero-mockup.png"
+                    src="/assets/hero/hero-mockup.png"
                     alt="Barbz & Co. Creative branded hoodie mockup"
                     className="h-full w-full object-cover"
                     onError={() => setHeroImageFailed(true)}
@@ -117,7 +117,7 @@ export default function Home() {
           <SectionHeading eyebrow="Our Work" title="Stories We've Helped Bring to Life" />
         </Reveal>
         <RevealGroup className="mt-16 grid gap-6 md:grid-cols-3">
-          {portfolio.slice(0, 3).map((item) => (
+          {portfolio.filter((p) => p.featured).slice(0, 3).map((item) => (
             <Link
               key={item.id}
               to="/portfolio"

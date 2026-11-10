@@ -56,7 +56,7 @@ export default function Contact() {
               <span className="flex h-11 w-11 items-center justify-center rounded-full bg-royal-600 text-gold-300">@</span>
               <div>
                 <p className="font-primary text-sm font-semibold text-royal-700 dark:text-sky-50">Email</p>
-                <p className="font-secondary text-xs text-royal-400 dark:text-sky-200/70">barbz&cocreative@gmail.com</p>
+                <p className="font-secondary text-xs text-royal-400 dark:text-sky-200/70">barbzcocreative@gmail.com</p>
               </div>
             </div>
             <div className="card-premium flex items-center gap-4">
