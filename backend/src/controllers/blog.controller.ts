@@ -3,13 +3,16 @@ import { z } from 'zod';
 import { pool } from '../db/pool.js';
 import type { AuthedRequest } from '../middleware/auth.js';
 
+// The admin forms send '' for empty fields; treat that as "not provided"
+const emptyToUndefined = (v: unknown) => (v === '' ? undefined : v);
+
 const postSchema = z.object({
   title: z.string().min(1),
   slug: z.string().min(1),
   excerpt: z.string().optional(),
   content: z.string().min(1),
   category: z.string().optional(),
-  image_url: z.string().url().optional(),
+  image_url: z.preprocess(emptyToUndefined, z.string().url().optional()),
   publish: z.boolean().optional(),
 });
 
@@ -62,6 +65,10 @@ export async function createPost(req: AuthedRequest, res: Response, next: NextFu
     );
     res.status(201).json(result.rows[0]);
   } catch (err) {
+    // 23505 = Postgres unique violation (duplicate slug)
+    if ((err as { code?: string }).code === '23505') {
+      return res.status(409).json({ message: 'A post with this title already exists. Please use a different title.' });
+    }
     next(err);
   }
 }

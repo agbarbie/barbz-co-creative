@@ -2,11 +2,14 @@ import type { Request, Response, NextFunction } from 'express';
 import { z } from 'zod';
 import { pool } from '../db/pool.js';
 
+// The admin forms send '' for empty fields; treat that as "not provided"
+const emptyToUndefined = (v: unknown) => (v === '' ? undefined : v);
+
 const productSchema = z.object({
   name: z.string().min(2),
   category: z.enum(['hoodies', 'tshirts', 'sweatshirts', 'accessories']),
   price_kes: z.number().positive(),
-  image_url: z.string().url().optional(),
+  image_url: z.preprocess(emptyToUndefined, z.string().url().optional()),
   description: z.string().optional(),
   customizable: z.boolean().optional(),
 });

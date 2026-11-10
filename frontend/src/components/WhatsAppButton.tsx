@@ -1,6 +1,6 @@
 import './WhatsAppButton.css';
 
-const WHATSAPP_NUMBER = '254700000000';
+const WHATSAPP_NUMBER = '254705524140';
 
 export default function WhatsAppButton() {
   return (
