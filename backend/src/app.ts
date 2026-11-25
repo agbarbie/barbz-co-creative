@@ -18,7 +18,14 @@ import { notFound, errorHandler } from './middleware/errorHandler.js';
 export const app = express();
 
 app.use(helmet());
-app.use(cors({ origin: process.env.CLIENT_ORIGIN || 'http://localhost:5173' }));
+// Accepts one or more comma-separated origins and ignores trailing slashes,
+// so CLIENT_ORIGIN=https://site.vercel.app/ and CLIENT_ORIGIN=https://site.vercel.app both work
+const allowedOrigins = (process.env.CLIENT_ORIGIN || 'http://localhost:5173')
+  .split(',')
+  .map((o) => o.trim().replace(/\/+$/, ''))
+  .filter(Boolean);
+
+app.use(cors({ origin: allowedOrigins }));
 app.use(morgan(process.env.NODE_ENV === 'production' ? 'combined' : 'dev'));
 app.use(express.json());
 app.use('/uploads', express.static('uploads'));
