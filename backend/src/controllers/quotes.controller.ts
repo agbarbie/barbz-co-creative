@@ -1,6 +1,7 @@
 import type { Request, Response, NextFunction } from 'express';
 import { z } from 'zod';
 import { pool } from '../db/pool.js';
+import { notifyOwner } from '../utils/notify.js';
 
 const quoteSchema = z.object({
   name: z.string().min(1),
@@ -19,6 +20,23 @@ export async function createQuote(req: Request, res: Response, next: NextFunctio
        VALUES ($1, $2, $3, $4, $5, $6) RETURNING *`,
       [data.name, data.email, data.phone, data.serviceType, data.budgetRange ?? null, data.details]
     );
+
+    // Wait for the email before replying (required on Vercel serverless).
+    await notifyOwner(
+      `New quote request from ${data.name}`,
+      [
+        `Name: ${data.name}`,
+        `Email: ${data.email}`,
+        `Phone: ${data.phone}`,
+        `Service: ${data.serviceType}`,
+        `Budget: ${data.budgetRange ?? '-'}`,
+        '',
+        'Project details:',
+        data.details,
+      ],
+      data.email
+    );
+
     res.status(201).json(result.rows[0]);
   } catch (err) {
     next(err);

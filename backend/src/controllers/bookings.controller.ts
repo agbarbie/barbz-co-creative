@@ -2,6 +2,7 @@ import type { Request, Response, NextFunction } from 'express';
 import { z } from 'zod';
 import { pool } from '../db/pool.js';
 import type { AuthedRequest } from '../middleware/auth.js';
+import { notifyOwner } from '../utils/notify.js';
 
 const bookingSchema = z.object({
   service: z.string().min(1),
@@ -21,6 +22,22 @@ export async function createBooking(req: AuthedRequest, res: Response, next: Nex
        VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *`,
       [req.user?.userId ?? null, data.service, data.date, data.time, data.name, data.email, data.phone, data.notes ?? null]
     );
+
+    // Wait for the email before replying (required on Vercel serverless).
+    await notifyOwner(
+      `New booking request from ${data.name}`,
+      [
+        `Name: ${data.name}`,
+        `Email: ${data.email}`,
+        `Phone: ${data.phone}`,
+        `Service: ${data.service}`,
+        `Date: ${data.date}`,
+        `Time: ${data.time}`,
+        `Notes: ${data.notes ?? '-'}`,
+      ],
+      data.email
+    );
+
     res.status(201).json(result.rows[0]);
   } catch (err) {
     next(err);

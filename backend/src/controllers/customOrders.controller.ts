@@ -2,13 +2,25 @@ import type { Request, Response, NextFunction } from 'express';
 import { z } from 'zod';
 import { pool } from '../db/pool.js';
 import type { AuthedRequest } from '../middleware/auth.js';
+import { notifyOwner } from '../utils/notify.js';
 
 const customOrderSchema = z.object({
   apparelType: z.string().min(1),
   colors: z.string().min(1),
   placement: z.string().min(1),
-  sizes: z.record(z.number().nonnegative()).default({}),
-  quantity: z.number().int().positive().default(1),
+  // Multipart form submissions send every field as a string, so accept a JSON string too
+  sizes: z.preprocess(
+    (v) => {
+      if (typeof v !== 'string') return v;
+      try {
+        return JSON.parse(v);
+      } catch {
+        return {};
+      }
+    },
+    z.record(z.coerce.number().nonnegative()).default({})
+  ),
+  quantity: z.coerce.number().int().positive().default(1),
   notes: z.string().optional(),
   contactEmail: z.string().email(),
   contactPhone: z.string().min(6),
@@ -18,7 +30,9 @@ export async function createCustomOrder(req: AuthedRequest, res: Response, next:
   try {
     const data = customOrderSchema.parse(req.body);
     // req.file is populated by multer when the client sends multipart/form-data with an "artwork" field
-    const artworkUrl = (req as Request & { file?: Express.Multer.File }).file?.path;
+    const file = (req as Request & { file?: Express.Multer.File }).file;
+    // On Vercel the disk is temporary, so an uploaded file cannot be kept (needs cloud storage).
+    const artworkUrl = file && !process.env.VERCEL ? `/uploads/${file.filename}` : undefined;
 
     const result = await pool.query(
       `INSERT INTO custom_orders
@@ -38,6 +52,32 @@ export async function createCustomOrder(req: AuthedRequest, res: Response, next:
         data.contactPhone,
       ]
     );
+
+    const sizesSummary =
+      Object.entries(data.sizes)
+        .filter(([, qty]) => Number(qty) > 0)
+        .map(([size, qty]) => `${size}: ${qty}`)
+        .join(', ') || '-';
+
+    // Wait for the email before replying (required on Vercel serverless).
+    await notifyOwner(
+      `New custom order request from ${data.contactEmail}`,
+      [
+        `Apparel: ${data.apparelType}`,
+        `Colours: ${data.colors}`,
+        `Placement: ${data.placement}`,
+        `Quantity: ${data.quantity}`,
+        `Sizes: ${sizesSummary}`,
+        `Email: ${data.contactEmail}`,
+        `Phone: ${data.contactPhone}`,
+        `Notes: ${data.notes ?? '-'}`,
+        file && !artworkUrl
+          ? `Artwork: customer attached "${file.originalname}" but it could not be stored - ask them to send it by email or WhatsApp.`
+          : `Artwork: ${artworkUrl ?? 'none attached'}`,
+      ],
+      data.contactEmail
+    );
+
     res.status(201).json(result.rows[0]);
   } catch (err) {
     next(err);
