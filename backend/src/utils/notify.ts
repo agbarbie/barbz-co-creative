@@ -12,7 +12,9 @@ const transporter =
 
 /**
  * Emails the studio owner about a new lead.
- * Never throws: a failed email must not break the customer's form submission.
+ * Await this before sending the HTTP response: on Vercel the function can be
+ * frozen right after the response, which would cut the email off.
+ * It never throws, so a failed email cannot break the customer's form submission.
  */
 export async function notifyOwner(subject: string, lines: string[], replyTo?: string) {
   if (!transporter) {

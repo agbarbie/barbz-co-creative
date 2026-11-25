@@ -16,12 +16,15 @@ export async function createContactMessage(req: Request, res: Response, next: Ne
       `INSERT INTO contact_messages (name, email, message) VALUES ($1, $2, $3) RETURNING *`,
       [data.name, data.email, data.message]
     );
-    // fire-and-forget: the visitor gets their response even if email fails
-    void notifyOwner(
+
+    // Wait for the email before replying (required on Vercel serverless).
+    // notifyOwner never throws, so the visitor still gets a success response if email fails.
+    await notifyOwner(
       `New contact message from ${data.name}`,
       [`Name: ${data.name}`, `Email: ${data.email}`, '', data.message],
       data.email
     );
+
     res.status(201).json(result.rows[0]);
   } catch (err) {
     next(err);
