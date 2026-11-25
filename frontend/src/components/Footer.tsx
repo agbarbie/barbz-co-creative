@@ -3,9 +3,9 @@ import Logo from './Logo';
 
 // TODO: replace with your real profile links
 const socials = [
-  { name: 'Instagram', url: 'https://instagram.com/' },
-  { name: 'TikTok', url: 'https://tiktok.com/' },
-  { name: 'LinkedIn', url: 'https://linkedin.com/' },
+  { name: 'Instagram', url: 'https://www.instagram.com/barbz_cocreative?knvt=MWoyaTVtMGZhcXAyNA==' },
+  { name: 'TikTok', url: 'https://www.tiktok.com/@barbiecue07' },
+  { name: 'LinkedIn', url: 'https://www.linkedin.com/in/barbara-wangui/' },
 ];
 
 export default function Footer() {
